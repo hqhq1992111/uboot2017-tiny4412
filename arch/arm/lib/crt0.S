@@ -89,6 +89,7 @@ ENTRY(_main)
 	mov	r9, r0
 	bl	board_init_f_init_reserve
 
+    bl debug_led_init
 	mov	r0, #0
 	bl	board_init_f
 

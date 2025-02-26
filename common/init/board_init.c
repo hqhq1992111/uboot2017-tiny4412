@@ -10,6 +10,8 @@
 #include <common.h>
 
 DECLARE_GLOBAL_DATA_PTR;
+#define GPM4CON 	(0x110002E0)
+#define GPM4DAT 	(0x110002E4)
 
 /* Unfortunately x86 or ARM can't compile this code as gd cannot be assigned */
 #if !defined(CONFIG_X86) && !defined(CONFIG_ARM)
@@ -129,6 +131,27 @@ void board_init_f_init_reserve(ulong base)
 #endif
 }
 
+void debug_led_init(void)
+{
+    unsigned int val;
+    val = readl(GPM4CON);
+    val &= 0xffff0000;
+    val |= 0x1111;
+    writel(val, GPM4CON);//gpio output mode
+
+    val = readl(GPM4DAT);
+    val &= 0xfffffff0;
+    writel(val, GPM4DAT);//gpio low output
+}
+
+void set_led_state(char state)
+{
+    unsigned int val;
+    val = readl(GPM4DAT);
+    val &= ~0xf;
+    val |= (state & 0xff);
+    writel(val, GPM4DAT);
+}
 /*
  * Board-specific Platform code can reimplement show_boot_progress () if needed
  */
