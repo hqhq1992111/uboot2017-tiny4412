@@ -1066,7 +1066,6 @@ void board_init_f(ulong boot_flags)
 	 */
 	zero_global_data();
 #endif
-
 	gd->flags = boot_flags;
 	gd->have_console = 0;
 

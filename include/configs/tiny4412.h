@@ -23,7 +23,7 @@
 	#define DEBUG 
 #endif
 #else
-#if 0
+#if 1
 	/* SPL DEBUG */
 	#define CONFIG_DEBUG_UART			1 
 	#define CONFIG_SPL_SERIAL_SUPPORT	1

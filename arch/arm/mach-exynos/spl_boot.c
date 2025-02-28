@@ -292,8 +292,9 @@ void board_init_f(unsigned long bootflag)
 
 	if (do_lowlevel_init())
 		power_exit_wakeup();
-
+    set_led_state(0xb);
 	copy_uboot_to_ram();
+    set_led_state(0xc);
 
 	/* Jump to U-Boot image */
 	uboot = (void *)CONFIG_SYS_TEXT_BASE;
