@@ -42,6 +42,7 @@ static void serial_find_console_or_panic(void)
 	} else if (CONFIG_IS_ENABLED(OF_CONTROL) && blob) {
 		/* Check for a chosen console */
 		node = fdtdec_get_chosen_node(blob, "stdout-path");
+        debug("fdtdec_get_chosen_node return,node 0x%x\n", node);
 		if (node < 0) {
 			const char *str, *p, *name;
 
@@ -61,6 +62,7 @@ static void serial_find_console_or_panic(void)
 					node = fdt_path_offset(blob, name);
 			}
 		}
+        debug("node 0x%x\n", node);
 		if (node < 0)
 			node = fdt_path_offset(blob, "console");
 		if (!uclass_get_device_by_of_offset(UCLASS_SERIAL, node,
@@ -68,6 +70,7 @@ static void serial_find_console_or_panic(void)
 			gd->cur_serial_dev = dev;
 			return;
 		}
+        debug("%s 0x%x\n", __func__, node);
 
 		/*
 		 * If the console is not marked to be bound before relocation,

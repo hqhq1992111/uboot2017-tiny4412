@@ -155,6 +155,11 @@ int lists_bind_fdt(struct udevice *parent, const void *blob, int offset,
 		dm_warn("Device tree error at offset %d\n", offset);
 		return compat_length;
 	}
+	for (i = 0; i < compat_length; i += strlen(compat) + 1) {
+		compat = compat_list + i;
+		dm_dbg("   - compatible string '%s'\n",
+		       compat);
+    }
 
 	/*
 	 * Walk through the compatible string list, attempting to match each

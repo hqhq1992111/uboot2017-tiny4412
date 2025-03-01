@@ -567,6 +567,7 @@ int fdtdec_get_chosen_node(const void *blob, const char *name)
 	prop = fdtdec_get_chosen_prop(blob, name);
 	if (!prop)
 		return -FDT_ERR_NOTFOUND;
+    debug("fdtdec_get_chosen_node,%s\n", prop);
 	return fdt_path_offset(blob, prop);
 }
 

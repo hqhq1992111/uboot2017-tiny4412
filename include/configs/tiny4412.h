@@ -18,9 +18,16 @@
 
 /* DEBUG UART */
 #if ! defined(CONFIG_SPL_BUILD)
-#if 0
+#if 1
 	/* U-BOOT DEBUG */
-	#define DEBUG 
+	#define DEBUG
+	/* SPL DEBUG */
+	#define CONFIG_DEBUG_UART			1 
+	#define CONFIG_SPL_SERIAL_SUPPORT	1
+	#define CONFIG_SPL_GPIO_SUPPORT		1
+	#define CONFIG_DEBUG_UART_S5P		1
+	#define CONFIG_DEBUG_UART_BASE		0x13800000
+	#define CONFIG_DEBUG_UART_CLOCK		(100000000)
 #endif
 #else
 #if 1

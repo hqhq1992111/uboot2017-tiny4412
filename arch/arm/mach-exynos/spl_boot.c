@@ -213,6 +213,9 @@ void copy_uboot_to_ram(void)
 
 	if (bootmode == BOOT_MODE_OM)
 		bootmode = get_boot_mode();
+#ifdef CONFIG_DEBUG_UART
+    printascii("[SPL] bootmode:0x");printhex8(bootmode);printascii("\n");
+#endif
 
 	switch (bootmode) {
 #ifdef CONFIG_SPI_BOOTING
@@ -298,6 +301,10 @@ void board_init_f(unsigned long bootflag)
 
 	/* Jump to U-Boot image */
 	uboot = (void *)CONFIG_SYS_TEXT_BASE;
+#ifdef CONFIG_DEBUG_UART
+    printascii("[SPL] jump to u-boot: 0x");printhex8(uboot);printascii("\n");
+#endif
+
 	(*uboot)();
 	/* Never returns Here */
 }
