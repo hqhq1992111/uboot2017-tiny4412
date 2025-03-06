@@ -61,13 +61,14 @@ static int led_gpio_bind(struct udevice *parent)
 	struct udevice *dev;
 	int node;
 	int ret;
-
+    node = fdt_first_subnode(blob, dev_of_offset(parent));
+    debug("%s: node 0x%x\n", __func__, node);
 	for (node = fdt_first_subnode(blob, dev_of_offset(parent));
 	     node > 0;
 	     node = fdt_next_subnode(blob, node)) {
 		struct led_uclass_plat *uc_plat;
 		const char *label;
-
+        debug("%s: node %s\n", __func__, fdt_get_name(blob, node, NULL));
 		label = fdt_getprop(blob, node, "label", NULL);
 		if (!label) {
 			debug("%s: node %s has no label\n", __func__,

@@ -9,6 +9,7 @@
 
 /dts-v1/;
 #include "exynos4412.dtsi"
+#include "include/dt-bindings/gpio/gpio.h"
 
 / {
 	model = "Tiny4412 based on Exynos4412";
@@ -23,5 +24,13 @@
 	
 	serial@13800000 {
 		status = "okay";
+	};
+
+	leds {
+		compatible = "gpio-leds";
+		led0 {
+			label = "led0 label";
+			gpios = <&gpm4 0 GPIO_ACTIVE_LOW>;
+		};
 	};
 };

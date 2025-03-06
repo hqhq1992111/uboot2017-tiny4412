@@ -145,6 +145,7 @@ static int board_uart_init(void)
 int board_early_init_f(void)
 {
 	int err;
+
 #ifdef CONFIG_BOARD_TYPES
 	set_board_type();
 #endif

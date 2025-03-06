@@ -38,6 +38,7 @@ obj-$(CONFIG_CMD_CPU) += cpu.o
 obj-$(CONFIG_DATAFLASH_MMC_SELECT) += dataflash_mmc_mux.o
 obj-$(CONFIG_CMD_DATE) += date.o
 obj-$(CONFIG_CMD_DEMO) += demo.o
+obj-y += led_demo.o
 obj-$(CONFIG_CMD_SOUND) += sound.o
 ifdef CONFIG_4xx
 obj-$(CONFIG_CMD_SETGETDCR) += dcr.o

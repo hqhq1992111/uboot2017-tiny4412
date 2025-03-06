@@ -35,7 +35,7 @@ static void show_devices(struct udevice *dev, int depth, int last_flag)
 		}
 	}
 
-	printf("%s\n", dev->name);
+	printf("%s address:0x%p\n", dev->name, dev);
 
 	list_for_each_entry(child, &dev->child_head, sibling_node) {
 		is_last = list_is_last(&child->sibling_node, &dev->child_head);
