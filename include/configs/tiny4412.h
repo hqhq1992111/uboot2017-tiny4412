@@ -45,15 +45,16 @@
 #define CONFIG_BLK					1
 
 /* USB */
-/* #define CONFIG_USB_EHCI_EXYNOS		1 */
+#define CONFIG_USB_EHCI_EXYNOS		1
 
 /* USB-KEYBOARD */
 #define CONFIG_SYS_STDIO_DEREGISTER 1 
 
 /* ETHERNET */
+#if 0
 #define CONFIG_USB_HOST_ETHER		1
 #define CONFIG_USB_ETHER_DM9621		1
-
+#endif
 /* BOOTP */
 #define CONFIG_BOOTP_SERVERIP		1
 
