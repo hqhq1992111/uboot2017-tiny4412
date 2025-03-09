@@ -20,6 +20,7 @@
 
 	aliases {
 		serial0 = "/serial@13800000";
+		mmc2 = "/sdhci@12530000";
 	};
 	
 	serial@13800000 {
@@ -32,5 +33,12 @@
 			label = "led0 label";
 			gpios = <&gpm4 0 GPIO_ACTIVE_LOW>;
 		};
+	};
+	
+	sdhci@12530000 {
+		compatible = "samsung,exynos4412-sdhci";
+		samsung,bus-width = <4>;
+		samsung,timing = <1 2 3>;
+		cd-gpios = <&gpk2 2 0>;
 	};
 };

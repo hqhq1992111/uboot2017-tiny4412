@@ -1066,8 +1066,9 @@ void board_init_f(ulong boot_flags)
 	 */
 	zero_global_data();
 #endif
+#ifdef CONFIG_DEBUG_UART
     printascii("board_init_f in uboot\n");
-
+#endif
 	gd->flags = boot_flags;
 	gd->have_console = 0;
 
