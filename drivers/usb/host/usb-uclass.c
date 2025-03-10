@@ -15,6 +15,7 @@
 #include <dm/device-internal.h>
 #include <dm/lists.h>
 #include <dm/uclass-internal.h>
+#include <asm/gpio.h>
 
 DECLARE_GLOBAL_DATA_PTR;
 
@@ -231,6 +232,15 @@ int usb_init(void)
 
 	asynch_allowed = 1;
 	usb_hub_reset();
+	ret = gpio_direction_output(EXYNOS4X12_GPIO_M24, 0);
+	if (ret) {
+		printf("%s:USB4604 GPIO_M24 set to 0 failed!\n", __FUNCTION__);
+	}
+    mdelay(50);
+   	ret = gpio_direction_output(EXYNOS4X12_GPIO_M24, 1);
+	if (ret) {
+		printf("%s:USB4604 GPIO_M24 set to 1 failed!\n", __FUNCTION__);
+	}
 
 	ret = uclass_get(UCLASS_USB, &uc);
 	if (ret)
