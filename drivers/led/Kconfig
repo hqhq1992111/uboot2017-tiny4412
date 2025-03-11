@@ -2,6 +2,7 @@ menu "LED Support"
 
 config LED
 	bool "Enable LED support"
+ 	default y
 	depends on DM
 	help
 	  Many boards have LEDs which can be used to signal status or alerts.
@@ -19,6 +20,7 @@ config SPL_LED
 	  for this to work.
 config LED_GPIO
 	bool "LED support for GPIO-connected LEDs"
+	default y
 	depends on LED && DM_GPIO
 	help
 	  Enable support for LEDs which are connected to GPIO lines. These

@@ -465,6 +465,7 @@ config CMD_I2C
 
 config CMD_USB
 	bool "usb"
+	default y
 	help
 	  USB support.
 
